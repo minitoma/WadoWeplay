@@ -3,26 +3,39 @@ package com.minitoma.capitaine.wadoweplay;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.util.SparseArray;
 
 import java.util.List;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
+    private static int NUM_ITEMS = 3;
 
-    private final List fragments;
-
-    //On fournit à l'adapter la liste des fragments à afficher
-    public MyPagerAdapter(FragmentManager fm, List fragments) {
+    public MyPagerAdapter(FragmentManager fm)
+    {
         super(fm);
-        this.fragments = fragments;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return (Fragment)this.fragments.get(position);
+        switch (position) {
+            case 0:
+                return ListFriendFragment.newInstance("toto");
+            case 1:
+                return ProfileFragment.newInstance("Fragment 2");
+            case 2:
+                return StatusFeedFragment.newInstance("Fragment 3");
+            default:
+                return null;
+        }
     }
 
     @Override
     public int getCount() {
-        return this.fragments.size();
+        return NUM_ITEMS;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return "tab" + position;
     }
 }
