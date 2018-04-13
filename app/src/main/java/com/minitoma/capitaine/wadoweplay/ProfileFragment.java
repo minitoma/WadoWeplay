@@ -1,6 +1,6 @@
 package com.minitoma.capitaine.wadoweplay;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,9 +28,11 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        TextView tvLabel = (TextView) getView().findViewById(R.id.title3);
+        View RootView = inflater.inflate(R.layout.profile_layout, container, false);
+
+        TextView tvLabel = (TextView) RootView.findViewById(R.id.title3);
         tvLabel.setText(title);
 
-        return inflater.inflate(R.layout.profile_layout, container, false);
+        return RootView;
     }
 }

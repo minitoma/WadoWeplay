@@ -3,12 +3,13 @@ package com.minitoma.capitaine.wadoweplay;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.SparseArray;
-
-import java.util.List;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 3;
+
+    StatusFeedFragment statusFeedFragment = StatusFeedFragment.newInstance("Liste des status");
+    ProfileFragment profileFragment = ProfileFragment.newInstance("Profil");
+    ListFriendFragment listFriendFragment = ListFriendFragment.newInstance("Liste d'amis");
 
     public MyPagerAdapter(FragmentManager fm)
     {
@@ -19,11 +20,11 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return ListFriendFragment.newInstance("toto");
+                return statusFeedFragment;
             case 1:
-                return ProfileFragment.newInstance("Fragment 2");
+                return profileFragment;
             case 2:
-                return StatusFeedFragment.newInstance("Fragment 3");
+                return listFriendFragment;
             default:
                 return null;
         }
